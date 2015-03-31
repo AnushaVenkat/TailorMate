@@ -1,9 +1,89 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4>New Order</h4>
+        </div>
+        <div class="panel-body">
+            <form class="form" method="post" ng-submit="addShow()" name="addForm">
 
-</body>
-</html>
+                <!--CUSTOMER DETAILS-->
+
+                <h4>Customer Details</h4>
+                <hr>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" ng-model="name" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="text" class="form-control" id="phone" ng-model="phone" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" ng-model="address" placeholder="Address">
+                </div>
+
+                <h4>Delivery Details</h4>
+                <hr>
+                <div class="form-group">
+                    <label for="delivery_date">Delivery Date</label>
+                    <input type="datetime" class="form-control" id="delivery_date" ng-model="delivery_date" placeholder="Delivery Date (dd/mm/yyyy)">
+                </div>
+                <div class="form-group">
+                    <label for="delivery_time">Delivery Time</label>
+                    <input type="datetime" class="form-control" id="delivery_time" ng-model="delivery_time" placeholder="Delivery Time (Eg., 6:00 PM)">
+                </div>
+
+
+                <!--PATTERN DETAILS-->
+
+                <h4>Choose Pattern</h4>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-6 col-md-3">
+                        <a class="thumbnail" href="" ng-click="selected=1">
+                            <img alt="100%x180" ng-src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTQcGR5VukddBc8dFPfpcHliNc58tTKMOEXX1MeeILGhfpJJN6O" style="height: 180px; width: 100%; display: block;" src="http://www.google.com/imgres?imgurl=http://boutiqueblouses.com/wp-content/uploads/2013/07/stylish-blouse-back-design.jpg&imgrefurl=http://flexmod.se/blouse-neck-designs.htm&h=480&w=720&tbnid=rDFtIZXYS4UeTM:&zoom=1&docid=wyYPVhczzXkXOM&ei=ErIaVeW7HoipuwS084HIDg&tbm=isch&ved=0CEEQMygdMB0" data-holder-rendered="true">
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a class="thumbnail" href="" ng-click="selected=2">
+                            <img alt="100%x180" ng-src="http://boutiquesareeblouse.com/wp-content/uploads/2013/10/bridal-blouse.jpg" style="height: 180px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5IiB5PSI5MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE3MXgxODA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a class="thumbnail" href="" ng-click="selected=3">
+                            <img alt="100%x180" ng-src="http://www.forangelsonly.org/wp-content/uploads/2013/10/Latest-trendy-designer-blouse-012.jpg?817de1" style="height: 180px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5IiB5PSI5MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE3MXgxODA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+                        </a>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <a class="thumbnail" href="" ng-click="selected=4">
+                            <img alt="100%x180" ng-src="http://www.lakmitailors.com/Materials/LT%20W8.jpg" style="height: 180px; width: 100%; display: block;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE3MSAxODAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9IjU5IiB5PSI5MCIgc3R5bGU9ImZpbGw6I0FBQUFBQTtmb250LXdlaWdodDpib2xkO2ZvbnQtZmFtaWx5OkFyaWFsLCBIZWx2ZXRpY2EsIE9wZW4gU2Fucywgc2Fucy1zZXJpZiwgbW9ub3NwYWNlO2ZvbnQtc2l6ZToxMHB0O2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE3MXgxODA8L3RleHQ+PC9nPjwvc3ZnPg==" data-holder-rendered="true">
+                        </a>
+                    </div>
+                </div>
+
+                <h4>Measurements</h4>
+                <hr>
+                <div class="form-group">
+                    <label for="chest">Chest</label>
+                    <input type="number" class="form-control" id="chest" ng-model="chest" placeholder="Chest (in inches)">
+                </div>
+                <div class="form-group">
+                    <label for="length">Length</label>
+                    <input type="number" class="form-control" id="length" ng-model="length" placeholder="Length (in inches)">
+                </div>
+                <div class="form-group">
+                    <label for="across_back">Across Back</label>
+                    <input type="number" class="form-control" id="across_back" ng-model="across_back" placeholder="Across Back (in inches)">
+                </div>
+                <div class="form-group">
+                    <label for="sleeve_length">Sleeve Length</label>
+                    <input type="number" class="form-control" id="sleeve_length" ng-model="sleeve_length" placeholder="Sleeve Length (in inches)">
+                </div>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>

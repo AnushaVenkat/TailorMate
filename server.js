@@ -236,6 +236,40 @@ app.get('/api/shows/:id', function(req, res, next) {
 });
 
 app.post('/api/shows', function (req, res, next) {
+    var show = new Show({
+        _id: new Date().getTime(),
+        name: req.body.name,
+        ratingCount: req.body.phone,
+        airsTime: req.body.delivery_time,
+        firstAired: req.body.delivery_date,
+        network: req.body.address,
+        poster: req.body.poster,
+        status: 'In-Progress',
+        overview: req.body.measurements
+    });
+    show.episodes.push({
+        season: 1,
+        episodeNumber: 1,
+        episodeName: 'Blouse',
+        firstAired: req.body.delivery_date,
+        overview: 'In-Progress'
+    });
+    show.save(function (err) {
+        if (err) {
+            if (err.code == 11000) {
+                return res.send(409, { message: show.name + ' already exists.' });
+            }
+            return next(err);
+        }
+        res.send(200);
+    });
+//    console.log(phone);
+//    res.sendStatus(200);
+});
+
+
+/*
+app.post('/api/shows', function (req, res, next) {
   var seriesName = req.body.showName
     .toLowerCase()
     .replace(/ /g, '_')
@@ -315,7 +349,7 @@ app.post('/api/shows', function (req, res, next) {
       res.send(200);
     });
   });
-});
+}); */
 
 app.post('/api/subscribe', ensureAuthenticated, function(req, res, next) {
   Show.findById(req.body.showId, function(err, show) {
