@@ -23,11 +23,6 @@ angular.module('MyApp', ['ngResource', 'ngMessages', 'ngRoute', 'ngAnimate', 'mg
         templateUrl: 'views/add.html',
         controller: 'AddCtrl'
       })
-      .when('/orderAPickup', {
-            templateUrl: 'views/orderAPickup.html',
-            controller: 'AddCtrl'
-      })
-   
       .otherwise({
         redirectTo: '/'
       });

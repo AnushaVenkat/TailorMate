@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="media">
@@ -10,53 +10,67 @@
                 <span class="ion-plus"></span> Subscribe
               </button>
             </div>
-            <div ng-show="isSubscribed()">
+            <!--<div ng-show="isSubscribed()">
               <button ng-click="unsubscribe()" class="btn btn-block btn-danger">
                 <span class="ion-minus"></span> Unsubscribe
               </button>
-            </div>
+            </div>-->
           </div>
-          <div class="text-center" ng-show="!currentUser">
-            <a class="btn btn-block btn-primary" href="#/login">Login to Subscribe</a>
-          </div>
+
         </div>
         <div class="media-body">
           <h2 class="media-heading">
             {{show.name}}
-            <span class="pull-right text-danger"><span class="ion-heart"></span> {{show.rating}}</span>
+            <span class="pull-right text-danger">Number OF Orders :{{show.rating}}</span>
           </h2>
           <h4 ng-show="show.status === 'Continuing'">
             <span class="ion-calendar"></span>
-            {{show.airsDayOfWeek}} <em>{{show.airsTime}}</em> on
+            {{show.ratingCount}}
+            </br>
             {{show.network}}
           </h4>
-          <h4 ng-show="show.status === 'Ended'">
-            Status: <span class="text-danger">Ended</span>
+          <h4> <!--ng-show="show.status === 'Ended'"-->
+            Status: <span class="text-danger">{{show.status}}</span>
           </h4>
-          <p>{{show.overview}}</p>
+            <ul>
+                <li ng-repeat="image in images">
+                    {{image}}
+                </li>
+            </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="alert alert-info" ng-show="nextEpisode">
-    The next episode starts {{nextEpisode.firstAired | fromNow}}.
-  </div>
+
 
   <div class="panel panel-default">
     <div class="panel-heading">
-      <span class="ion-film-marker"></span> Episodes
+      <span class="ion-film-marker"></span> Orders
     </div>
     <div class="panel-body">
       <div class="episode" ng-repeat="episode in show.episodes">
-        <h4>{{episode.episodeName}}
-        <small>Season {{episode.season}}, Episode {{episode.episodeNumber}}</small>
+        <h4><font color="red">{{episode.episodeName}}</font>
+        <small> <br> <b>Order </b> {{episode.season}}, <b>Sub-Order </b>{{episode.episodeNumber}} </br></small>
         </h4>
         <p>
           <span class="ion-clock"></span>
-          {{episode.firstAired | date: 'short'}}
+        <B> TO-BE-DELIVERED-ON :   </B>{{episode.firstAired | date: 'short'}}
         </p>
-        <p>{{episode.overview}}</p>
+        <p> <B>DELIVERY-STATUS : </B>{{episode.overview}}
+          <h4 ng-show="episode.overview === 'In-Progress'">
+                <button ng-click="processStateAlert()" class="btn">Moved to Completed</button>
+          </h4>
+          <h4 ng-show="episode.overview === 'Processed'">
+              <button ng-click="processStateAlert()" class="btn">Moved to Delivered</button>
+          </h4>
+          <h4 ng-show="episode.overview === 'Returned'">
+              <button ng-click="processStateAlert()" class="btn">Moved to In-Progress</button>
+          </h4>
+          </p>
+          </div>
+        <p></p>
+        <p></p>
       </div>
     </div>
   </div>
