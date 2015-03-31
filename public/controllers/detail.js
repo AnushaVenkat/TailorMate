@@ -7,6 +7,10 @@ angular.module('MyApp')
           return $scope.show.subscribers.indexOf($rootScope.currentUser._id) !== -1;
         };
 
+        $scope.processStateAlert = function() {
+            alert("Successfully Moved");
+        };
+
         $scope.subscribe = function() {
           Subscription.subscribe(show).success(function() {
             $scope.show.subscribers.push($rootScope.currentUser._id);
@@ -23,5 +27,10 @@ angular.module('MyApp')
         $scope.nextEpisode = show.episodes.filter(function(episode) {
           return new Date(episode.firstAired) > new Date();
         })[0];
+
+          var data = {
+              "i_name":show.overview
+          };
+          $scope.images = data.i_name.split(',');
       });
     });
